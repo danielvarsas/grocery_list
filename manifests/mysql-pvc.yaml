@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  namespace: dani-grocery  # Specify your namespace here
+spec:
+  accessModes:
+    - ReadWriteOnce  # Only one node can mount the volume for read/write
+  resources:
+    requests:
+      storage: 1Gi  # Size of the requested storage
+  storageClassName: manual  # Match the storage class with the PV

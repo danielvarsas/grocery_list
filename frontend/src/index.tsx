@@ -18,7 +18,7 @@ const App: React.FC = () => {
   }, []);
 
   const fetchGroceryItems = () => {
-    fetch('http://127.0.0.1:5000/grocery')
+    fetch('http://backend-service:5000/grocery')
       .then(response => response.json())
       .then(data => {
         setGroceries(data.groceries);
@@ -30,7 +30,7 @@ const App: React.FC = () => {
     if (editingItem) {
       updateGroceryItem(editingItem.id, newItem);
     } else {
-      fetch('http://127.0.0.1:5000/grocery', {
+      fetch('http://backend-service:5000/grocery', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const App: React.FC = () => {
   };
 
   const updateGroceryItem = (id: number, updatedItem: { name: string; quantity: number }) => {
-    fetch(`http://127.0.0.1:5000/grocery/${id}`, {
+    fetch(`http://backend-service:5000/grocery/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const App: React.FC = () => {
   };
 
   const deleteGroceryItem = (id: number) => {
-    fetch(`http://127.0.0.1:5000/grocery/${id}`, {
+    fetch(`http://backend-service:5000/grocery/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
